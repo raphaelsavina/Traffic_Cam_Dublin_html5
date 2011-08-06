@@ -1,0 +1,193 @@
+body {
+	margin: 0;
+	padding: 0;
+	background: #000000;
+}
+
+a:link, a:visited {
+	color: #FFFFFF;
+	text-decoration:none;
+}
+
+a:hover, a:active {
+	color: #FF0000;
+	text-decoration:none;
+}
+
+a.linktab:link, a.linktab:visited {
+	color: #000000;
+	text-decoration:none;
+}
+
+a.linktab:hover, a.linktab:active {
+	color: #FF0000;
+	text-decoration:none;
+}
+
+.title {
+	color: #BBBBBB;
+	font: 26px sans-serif;
+	text-align:left;
+	margin: 15px;
+	width:270px;
+	text-align:center;
+}
+
+.textfeedback, .textabout {
+	color: #FFFFFF;
+	font: 11px sans-serif;
+	text-align:left;
+	margin: 15px;
+	width:270px;	
+	text-align:center;
+}
+
+.container{
+	position:absolute;
+	top:0px;
+	left:0px;
+	z-index:99;
+	display:block;
+}
+
+select {
+	position:absolute;
+	top:50px;
+	left:5px;
+	width: 220px;
+}
+
+/* The rounded tabs */
+.about, .homea {
+	position:absolute;
+	top:250px;
+	left:17px;
+	margin:0px;
+	width:76px;
+	padding:5px 0px;
+	font: 14px sans-serif;
+	text-align:center;
+	color: #000000;
+	background: #FFFFFF;
+	border-radius: 5px;
+	z-index:13;
+}
+
+.changeCam {
+	position:absolute;
+	top:250px;
+	left:112px;
+	margin:0px;
+	width: 76px;
+	padding:5px 0px;
+	font: 14px sans-serif;
+	text-align:center;
+	color: #000000;
+	background: #FFFFFF;
+	border-radius: 5px;
+	z-index:12;
+}
+
+.feedback, .homef {
+	position:absolute;
+	top:250px;
+	left:207px;
+	margin: 0px;
+	width: 76px;
+	padding:5px 0px;
+	font: 14px sans-serif;
+	text-align:center;
+	color: #000000;
+	background: #FFFFFF;
+	border-radius: 5px;
+	z-index:11;
+}
+
+.Cam_name {
+	position:absolute;
+	top: 230px;
+	left:0px;
+	margin:0px;
+	width: 300px;
+	font: 12px sans-serif;
+	text-align:center;
+	color: #FFFFFF;
+	background: #333333;
+	z-index:10;
+}
+
+.ad_desktop {
+	position:absolute;
+	top:290px;
+	left:0px;
+	width: 320px;
+	text-align:center;
+	background: #000000;
+}
+.ad_mobile {
+	position:absolute;
+	top:290px;
+	left:0px;
+	width: 320px;
+	text-align:center;
+	background: #000000;
+}
+
+/* here are the settings for the images */
+
+.webcam0, .webcam1, .webcam2, .webcam3, .webcam4, .past, .now {
+	margin: 0;
+	padding: 0;
+	top: 0px;
+}
+
+/* Position: 0px, 384px, 768px, 1152px, 1536px, 1920px */
+.past{
+	position:absolute;
+	left: 0px;
+	height: 225px;
+	z-index:5;
+}
+.webcam4 {
+	position:absolute;
+	left: 0px;
+	width: 300px;
+	height: 225px;
+	z-index:0;
+}
+.webcam3 {
+	position:absolute;
+	left: 300px;
+	width: 300px;
+	height: 225px;
+	z-index:1;
+}
+.webcam2 {
+	position:absolute;
+	left: 600px;
+	width: 300px;
+	height: 225px;
+	z-index:2;
+}
+.webcam1 {
+	position:absolute;
+	left: 900px;
+	width: 300px;
+	height: 225px;
+	z-index:3;
+}
+.webcam0 {
+	position:absolute;
+	left: 1200px;
+	width: 300px;
+	height: 225px;
+	z-index:4;
+}
+.now {
+	position:absolute;
+	left: 1425px;
+	height: 225px;
+	z-index:6;
+	border: #000000;
+}
+
