@@ -78,7 +78,7 @@ li.over {
 border: 1px dashed #000;
 }
 
-#bin {
+#dropzone {
   background-color: #FF6A6A;
   height: 250px;
   width: 166px;
@@ -91,23 +91,22 @@ border: 1px dashed #000;
 .item {
   background-color: #FF5555;
 border: 1px dashed #000;
-}
-*[draggable=true] {
-  -moz-user-select:none;
+-moz-user-select:none;
   -khtml-user-drag: element;
   cursor: move;
 }
+
 </style>
 <script src="http://html5demos.com/h5utils.js"></script>
 </head>
 <body onload="">
 
   <div id="instruction">Drag your favourites into the box.</div>
-  <div id="bin"></div>
+  <div id="dropzone"></div>
   <ul>
 		<li><a href="#" id="Site0Camera10">The Quays from Liberty Hall</a></li>
 		<li><a href="#" id="Site0Camera100">N11-Fosters</a></li>
-		<li><a href="#" id="Site0Camera101">N11-Mont Merrion</a></li>
+		<li><a href="#" id="Site0Camera101">N11-Mount Merrion</a></li>
 		<li><a href="#" id="Site0Camera102">N11-Kilmacud Rd</a></li>
 		<li><a href="#" id="Site0Camera103">N11-Trees Road</a></li>
 		<li><a href="#" id="Site0Camera104">N11-Newtownpark Avenue</a></li>
@@ -201,7 +200,8 @@ function cancel(e)
 
 
  var links = document.querySelectorAll('li > a'), el = null;
-  for (var i = 0; i < links.length; i++) {
+  for (var i = 0; i < links.length; i++)
+  {
     el = links[i];
   
     el.setAttribute('draggable', 'true');
@@ -220,19 +220,73 @@ function cancel(e)
 	 
 	});
   }
-
-var drop = document.querySelector('#bin');
+var i =0;
+var items = new Array();
+var dropzone = document.querySelector('#dropzone');
 // Tells the browser that we *can* drop on this target
-addEvent(drop, 'dragover', cancel);
-addEvent(drop, 'dragenter', cancel);
+addEvent(dropzone, 'dragover', cancel);
+addEvent(dropzone, 'dragenter', cancel);
 
-addEvent(drop, 'drop', function (e) {
+addEvent(dropzone, 'drop', function (e) {
   if (e.preventDefault) e.preventDefault(); // stops the browser from redirecting off to the text.
 
-  this.innerHTML += '<div class="item" draggable>' + e.dataTransfer.getData('text') + '</div>';
+  this.innerHTML += '<div class="item" id="item' + i + '" draggable>' + e.dataTransfer.getData('text') + '</div>';
+  
+  
+  
+   items[i] = document.getElementById('item'+i);
+  
+	for (var j = 0; j <= i; j++)
+	{
+	var elit = items[j];
+  
+    elit.setAttribute('draggable', 'true');
+  
+    addEvent(elit, 'dragstart', function (e)
+	{
+	var event;
+	if (!event) event = e;
+	event.target.parentNode.removeChild(event.target);
+	e.dataTransfer.setData('text', this.innerHTML);
+	//e.dataTransfer.effectAllowed = 'copy';
+	});
+	
+	addEvent(elit, 'dragend', function (e)
+	{
+	
+	 
+	});
+	}
+  i++;
   return false;
 });
 
+	addEvent(dropzone, 'dragleave', function (e)
+	{
+	
+	});
+/*var items = document.getElementById('item'), elit = null;
+  for (var i = 0; i < items.length; i++)
+	{
+    elit = items[i];
+  
+    elit.setAttribute('draggable', 'true');
+  
+    addEvent(elit, 'dragstart', function (e) {
+      e.dataTransfer.effectAllowed = 'copy'; // only dropEffect='copy' will be dropable
+      e.dataTransfer.setData('filename', this.id); // required otherwise doesn't work
+	  e.dataTransfer.setData('text', this.text);
+    });
+	
+	addEvent(elit, 'dragend', function (e)
+	{
+	var event;
+	if (!event) event = e;
+	event.target.parentNode.removeChild(event.target);
+	 
+	});
+  }
+  
 (function()
 {
   var id_ = 'columns-almostFinal';
@@ -308,14 +362,9 @@ addEvent(drop, 'drop', function (e) {
     col.addEventListener('drop', this.handleDrop, false);
     col.addEventListener('dragend', this.handleDragEnd, false);
   });
-})();
+})();*/
   
 </script>
-
-
-
-    </div>
-  </div>
 
 </body>
 </html>
