@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>Dublin Trafic</title>
+    <script type="text/javascript">
+	var cwidth = 300;
+	var cheight = 225;
+	var siteprefix = "http://trafficcam-fetcher.savina.net/serve_single_pic/";
+	var camera="Site0Camera137";   //variable to hold camera name
+
+	var img = new Image();	
+	var ctx;				//variable to hold the canvas
+	
+	var maxpic = 4;			// function diplays from the maxpic'th pic to the most recent
+	var picnum = maxpic;	// variable holds the number of the pic being presently displayed
+
+	var maxpause = 2;		// number frames to pause on the final image for
+	var pausetimer = maxpause; 
+		
+function animatepic(){  
+  ctx = document.getElementById('canvas1').getContext('2d');  
+  setInterval(drawpic,1000);  //calls the drawpic funtion every 1000 mileseconds
+  //drawpic();
+}  
+
+function drawpic(){  
+  img.src=siteprefix+camera+"/"+picnum;
+
+  ctx.clearRect(0,0,cwidth,cheight);
+  ctx.drawImage(img,0,0,cwidth,cheight);
+ //   alert(img.src);
+
+  picnum = picnum-1;
+  if(picnum <0)   //last pic logic if usunig 
+  {	
+ // 	pausetimer = pausetimer - 1;
+  //	if( pausetimer <0)
+  //	{
+  		picnum=maxpic;
+  //		pausetimer = maxpause;
+  //	}  	
+  }   
+} 
+</script>
+</head>
+<body onLoad="animatepic();">  
+<canvas id="canvas1" width="1200" height="900">
+This browser doesn't support the HTML5 canvas element.
+</canvas>  
+
+</body>
+</html>

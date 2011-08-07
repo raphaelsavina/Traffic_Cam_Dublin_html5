@@ -1,0 +1,106 @@
+<html>
+<head>
+    <title>Dublin Trafic</title>
+    <script type="text/javascript">
+	var cwidth = 300;
+	var cheight = 200;
+
+	
+	var siteprefix = "http://trafficcam-fetcher.savina.net/serve_single_pic/";
+	var camera1="Site0Camera100";   //variable to hold camera name
+	var camera2="Site0Camera101";   //variable to hold camera name
+	var camera3="Site0Camera102";   //variable to hold camera name
+	var camera4="Site0Camera103";   //variable to hold camera name
+	var camera5="Site0Camera104";   //variable to hold camera name
+	var camera6="Site0Camera105";   //variable to hold camera name
+	var camera7="Site0Camera106";   //variable to hold camera name
+	var camera8="Site0Camera107";   //variable to hold camera name
+	var camera9="Site0Camera108";   //variable to hold camera name
+	var camera10="Site0Camera109";   //variable to hold camera name
+	var camera11="Site0Camera110";   //variable to hold camera name
+	var camera12="Site0Camera111";   //variable to hold camera name
+	
+	
+	var img1 = new Image();	
+	var img2 = new Image();	
+	var img3 = new Image();	
+	var img4 = new Image();	
+	var img5 = new Image();	
+	var img6 = new Image();	
+	var img7 = new Image();	
+	var img8 = new Image();	
+	var img9 = new Image();	
+	var img10 = new Image();	
+	var img11 = new Image();	
+	var img12 = new Image();	
+
+	
+	var ctx;				//variable to hold the canvas
+	
+	var maxpic = 14;			// function diplays from the maxpic'th pic to the most recent
+	var picnum = maxpic;	// variable holds the number of the pic being presently displayed
+
+	var maxpause = 2;		// number frames to pause on the final image for
+	var pausetimer = maxpause; 
+		
+function animatepic(){  
+  ctx = document.getElementById('canvas').getContext('2d');  
+  setInterval(drawpic,1500);  //calls the drawpic funtion every 1000 mileseconds
+  //drawpic();
+}  
+
+function drawpic(){  
+	img1.src=siteprefix+camera1+"/"+picnum;
+	img2.src=siteprefix+camera2+"/"+picnum;
+	img3.src=siteprefix+camera3+"/"+picnum;
+	img4.src=siteprefix+camera4+"/"+picnum;
+	img5.src=siteprefix+camera5+"/"+picnum;
+	img6.src=siteprefix+camera6+"/"+picnum;
+	img7.src=siteprefix+camera7+"/"+picnum;
+	img8.src=siteprefix+camera8+"/"+picnum;
+	img9.src=siteprefix+camera9+"/"+picnum;
+	img10.src=siteprefix+camera10+"/"+picnum;
+	img11.src=siteprefix+camera11+"/"+picnum;
+	img12.src=siteprefix+camera12+"/"+picnum;
+
+	//first row
+	ctx.clearRect(0,0,cwidth,cheight);
+	ctx.drawImage(img1,0,0,cwidth,cheight);
+	ctx.drawImage(img2,cwidth,0,cwidth,cheight);
+	ctx.drawImage(img2,cwidth,0,cwidth,cheight);
+	ctx.drawImage(img3,cwidth*2,0,cwidth,cheight);
+	ctx.drawImage(img4,cwidth*3,0,cwidth,cheight);
+	
+	//second row
+	ctx.drawImage(img5,0,cheight,cwidth,cheight);
+	ctx.drawImage(img6,cwidth,cheight,cwidth,cheight);
+	ctx.drawImage(img7,cwidth*2,cheight,cwidth,cheight);
+	ctx.drawImage(img8,cwidth*3,cheight,cwidth,cheight);
+	
+	//thied row
+	ctx.drawImage(img9,0,cheight*2,cwidth,cheight);
+	ctx.drawImage(img10,cwidth,cheight*2,cwidth,cheight);
+	ctx.drawImage(img11,cwidth*2,cheight*2,cwidth,cheight);
+	ctx.drawImage(img12,cwidth*3,cheight*2,cwidth,cheight);
+
+
+  picnum = picnum-1;
+  if(picnum <0)   //last pic logic if usunig 
+  {	
+ // 	pausetimer = pausetimer - 1;
+  //	if( pausetimer <0)
+  //	{
+  		picnum=maxpic;
+  //		pausetimer = maxpause;
+  //	}  	
+  }   
+} 
+</script>
+</head>
+<body onLoad="animatepic();">  
+<canvas id="canvas" width="1200" height="900">
+This browser doesn't support the HTML5 canvas element.
+</canvas>  
+
+</body>
+</html>
