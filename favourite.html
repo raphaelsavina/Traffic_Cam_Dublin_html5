@@ -230,7 +230,7 @@ addEvent(dropzone, 'dragenter', cancel);
 addEvent(dropzone, 'drop', function (e) {
   if (e.preventDefault) e.preventDefault(); // stops the browser from redirecting off to the text.
 
-  this.innerHTML += '<div class="item" id="item' + i + '" draggable>' + e.dataTransfer.getData('text') + '</div>';
+  this.innerHTML += '<div class="item" id="item' + i + '" draggable><a href="' + e.dataTransfer.getData('filename') +'"></a>' + e.dataTransfer.getData('text') + '</div>';
   
   
   
@@ -263,6 +263,7 @@ addEvent(dropzone, 'drop', function (e) {
 
 	addEvent(dropzone, 'dragleave', function (e)
 	{
+	e.dataTransfer.href;
 	
 	});
 /*var items = document.getElementById('item'), elit = null;
