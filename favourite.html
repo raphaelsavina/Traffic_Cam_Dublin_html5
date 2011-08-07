@@ -4,26 +4,29 @@
 <head>
   <meta charset="utf-8" />
 
-  <meta name="description" content="A tool to allow you to choose your favourite traffic cams to be displayed." />
-  <title>Dublin Traffic Cams Favourite Selection</title>
+	<link rel="stylesheet" href="css/styles.css" type="text/css" media="screen" /> 
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no"/>
+	<meta name="description" content="Mobile optimised Dublin Traffic Cams" />
+	<meta name="keywords" content="Dublin, traffic, camera, livedrive, AA roadwatch, traffic cams" />
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 
-  <link rel="shortcut icon" href="images/favicon.ico" />
-  <link rel="stylesheet" media="all" href="css/styles.css" />
-  <link rel="stylesheet" media="only screen and (max-width: 800px)" href="css/styles.css" />
+	<script src="jquery-1.6.1.min.js"></script>
+	<script src="jquery.scrollTo-1.4.2-min.js"></script>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+	<!--Analytics-->
+	<script type="text/javascript">
 
-  <!-- iOS: run in full-screen mode and display upper status bar as translucent -->
-  <!--<meta name="apple-mobile-web-app-capable" content="yes" /> 
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />-->
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-23963982-1']);
+	  _gaq.push(['_trackPageview']);
 
-  <link rel="apple-touch-icon" href="/static/images/identity/HTML5_Badge_64.png" />
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
 
-  <link rel="apple-touch-icon-precomposed" href="/static/images/identity/HTML5_Badge_64.png" />
-  
-  <!--[if lt IE 9]>
-  <script src="http://html5shim.googlecode.com/svn/trunk/html5-els.js"></script>
-  <![endif]-->
+	</script>
 
   
 <style type="text/css">
@@ -99,6 +102,7 @@ border: 1px dashed #000;
 
 </style>
 <script src="http://html5demos.com/h5utils.js"></script>
+<script src="database.js"></script>
 </head>
 <body onload="">
 
@@ -211,15 +215,15 @@ function cancel(e)
       e.dataTransfer.effectAllowed = 'copy'; // only dropEffect='copy' will be dropable
       e.dataTransfer.setData('filename', this.id); // required otherwise doesn't work
 	  e.dataTransfer.setData('text', this.text);
+	  //e.hide();
     });
 	//addEvent(el, 'd', cancel);
 	addEvent(el, 'dragend', function (e)
 	{
-<<<<<<< HEAD
+
 	var event;
 	if (!event) event = e;
-=======
->>>>>>> Delete is not working yet...
+
 	event.target.parentNode.removeChild(event.target);
 	 
 	});
@@ -235,14 +239,14 @@ addEvent(dropzone, 'drop', function (e) {
   if (e.preventDefault) e.preventDefault(); // stops the browser from redirecting off to the text.
 
   this.innerHTML += '<div class="item" id="item' + i + '" draggable><a href="' + e.dataTransfer.getData('filename') +'"></a>' + e.dataTransfer.getData('text') + '</div>';
+  items[i] = document.getElementById('item'+i);
+  addArgs(e.dataTransfer.getData('filename'),i);
   
   
+   //items[i] = document.getElementById('item'+i);
   
-   items[i] = document.getElementById('item'+i);
-  
-	for (var j = 0; j <= i; j++)
-	{
-	var elit = items[j];
+	
+	var elit = items[i];
   
     elit.setAttribute('draggable', 'true');
   
@@ -260,14 +264,14 @@ addEvent(dropzone, 'drop', function (e) {
 	
 	 
 	});
-	}
+	
   i++;
   return false;
 });
 
 	addEvent(dropzone, 'dragleave', function (e)
 	{
-	e.dataTransfer.href;
+	removeArgs(e.dataTransfer.href);
 	
 	});
 /*var items = document.getElementById('item'), elit = null;
