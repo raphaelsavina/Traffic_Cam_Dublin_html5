@@ -8,8 +8,8 @@
   <title>Dublin Traffic Cams Favourite Selection</title>
 
   <link rel="shortcut icon" href="images/favicon.ico" />
-  <link rel="stylesheet" media="all" href="/css/styles.css" />
-  <link rel="stylesheet" media="only screen and (max-width: 800px)" href="/css/styles.css" />
+  <link rel="stylesheet" media="all" href="css/styles.css" />
+  <link rel="stylesheet" media="only screen and (max-width: 800px)" href="css/styles.css" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
 
@@ -214,7 +214,9 @@ function cancel(e)
 	//addEvent(el, 'd', cancel);
 	addEvent(el, 'dragend', function (e)
 	{
-		this.remove();
+//		e.remove();
+	event.target.parentNode.removeChild(event.target);
+	  
 	});
   }
 
@@ -227,7 +229,6 @@ addEvent(drop, 'drop', function (e) {
   if (e.preventDefault) e.preventDefault(); // stops the browser from redirecting off to the text.
 
   this.innerHTML += '<div class="item" draggable>' + e.dataTransfer.getData('text') + '</div>';
-  event.target.parentNode.removeChild(event.target);
   return false;
 });
 
@@ -310,44 +311,10 @@ addEvent(drop, 'drop', function (e) {
   
 </script>
 
-<script src="/static/js/modernizr.custom.07172.js"></script>
 
 
     </div>
   </div>
-<script>
-    (function()
-	{
-      // Check if new appcache is available.
-      if (window.applicationCache)
-	  {
-       window.applicationCache.addEventListener('updateready', function(e)
-		{
-          if (window.applicationCache.status == window.applicationCache.UPDATEREADY)
-		  {
-            window.applicationCache.swapCache();
-            if (confirm('A new version of this site is available. Load it?'))
-			{
-              window.location.reload();
-            }
-          }
-        }, false);
-     }
 
-      function isCompatible()
-	  {  
-		return Modernizr.draganddrop;
-      }
-
-      if (isCompatible() === false)
-	  {
-        document.getElementById('notcompatible').className = '';
-      } 
-	  else if (isCompatible() === true)
-	  {
-        document.getElementById('compatible').className = '';
-      }
-
-  </script>
 </body>
 </html>
