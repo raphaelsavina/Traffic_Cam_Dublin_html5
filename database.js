@@ -94,13 +94,6 @@ function addFilename() {
 	localStorage.setItem(name, pos);
 	getFilenames();
 }
-
-
-function ClearAll(){
-	localStorage.clear();
-	getFilenames();
-}
-
 function removeFilename(Filename){
 	localStorage.removeItem(filename);
 	getFilenames();
@@ -113,6 +106,13 @@ function removeArgs(filename){
 	localStorage.removeItem(filename);
 	//getFilenames();
 }
+
+function ClearAll(){
+	localStorage.clear();
+	getFilenames();
+}
+
+
 function ClearAll(){
 	localStorage.clear();
 	getFilenames();
