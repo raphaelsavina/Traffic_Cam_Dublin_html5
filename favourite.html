@@ -214,9 +214,10 @@ function cancel(e)
 	//addEvent(el, 'd', cancel);
 	addEvent(el, 'dragend', function (e)
 	{
-//		e.remove();
+	var event;
+	if (!event) event = e;
 	event.target.parentNode.removeChild(event.target);
-	  
+	 
 	});
   }
 
