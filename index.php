@@ -176,17 +176,14 @@ $arr_cam = array("Site0Camera10" => "The Quays from Liberty Hall",
 		<a class="linktab" href="camera.html">cameras</a>
 	</div>
 	<div class="Cam_name" id="Cam_name">
-		View of: <?php echo $arr_cam[$webcam];?>
+		View of:
 	</div>
 	<div class="feedback" id="feedback">
 		<a  class="linktab" href="feedback.html">feedback</a>
 	</div>
 
-
-
-
 	<div class="ad_mobile" id="ad_mobile">
-<!--
+	<!--
 	<script type="text/javascript"><!--
 	  // XHTML should not attempt to parse these strings, declare them CDATA.
 	  /* <![CDATA[ */
@@ -201,8 +198,8 @@ $arr_cam = array("Site0Camera10" => "The Quays from Liberty Hall",
 	<!--
 	</script>
 	<script type="text/javascript"    src="http://pagead2.googlesyndication.com/pagead/show_afmc_ads.js"></script>
-	</div>
 	-->
+	</div>
 
 </div>
 

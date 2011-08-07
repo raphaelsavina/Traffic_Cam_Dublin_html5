@@ -85,7 +85,7 @@ function initCamera() {
 }
 
 function initIndex() {
-    getFilenames();
+    getImages();
 }
 
 function addFilename() {
@@ -100,8 +100,7 @@ function ClearAll(){
 	getFilenames();
 }
 
-function removeFilename(){
-	var filename = document.getElementById("list").getName;
+function removeFilename(Filename){
 	localStorage.removeItem(filename);
 	getFilenames();
 }
@@ -112,7 +111,7 @@ function getFilenames(){
 		filename = localStorage.key(i);
 		var Loc = getName(filename);
 		position = localStorage.getItem(filename);
-		rowOutput += "<li id='list' name=" + filename + ">" + Loc + " [<a href='javascript:void(0);' onclick='removeFilename();'>Delete</a>]</li>";
+		rowOutput += "<li>" + Loc + " [<a href='javascript:void(0);' onclick='removeFilename('Site0Camera24');'>Delete</a>]</li>";
 	}
 	document.getElementById('allfilenames').innerHTML = rowOutput;
 } 
@@ -124,9 +123,9 @@ function getImages(){
 		filename = localStorage.key(i);
 		var Loc = getName(filename);
 		position = localStorage.getItem(filename);
-		rowOutput += '<img alt="'+ Loc + '!" id="imgCamera0" class="webcam0" ' + url + filename + '/0"><img alt="'+ Loc + '!" id="imgCamera1" class="webcam1" ' + url + filename + '/1"><img alt="'+ Loc + '!" id="imgCamera2" class="webcam2" ' + url + filename + '/2"><img alt="'+ Loc + '!" id="imgCamera3" class="webcam3" ' + url + filename + '/3"><img alt="'+ Loc + '!" id="imgCamera4" class="webcam4" ' + url + filename + '/4">';
+		rowOutput += '<img alt="'+ Loc + '!" id="imgCamera4" class="cam4" ' + url + filename + '/4"><img alt="'+ Loc + '!" id="imgCamera3" class="cam3" ' + url + filename + '/3"><img alt="'+ Loc + '!" id="imgCamera2" class="cam2" ' + url + filename + '/2"><img alt="'+ Loc + '!" id="imgCamera1" class="cam1" ' + url + filename + '/1"><img alt="'+ Loc + '!" id="imgCamera0" class="cam0" ' + url + filename + '/0"><br>';
 	}
-	document.getElementById('xxallfilenames').innerHTML = rowOutput;
+	document.getElementById('allimages').innerHTML = rowOutput;
 }
 
 function getName(filename) {
