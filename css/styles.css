@@ -34,17 +34,34 @@ a.linktab:hover, a.linktab:active {
 }
 
 .textfeedback, .textabout {
+	position:absolute;
 	color: #FFFFFF;
 	font: 11px sans-serif;
 	text-align:left;
 	margin: 15px;
-	width:270px;	
+	width:270px;
 	text-align:center;
 }
 
 .container{
 	position:absolute;
 	top:0px;
+	left:0px;
+	z-index:99;
+	display:block;
+}
+
+.container2{
+	position:absolute;
+	top:30px;
+	left:0px;
+	z-index:99;
+	display:block;
+}
+
+.container3{
+	position:absolute;
+	top:200px;
 	left:0px;
 	z-index:99;
 	display:block;
@@ -60,7 +77,7 @@ select {
 /* The rounded tabs */
 .about, .homea {
 	position:absolute;
-	top:250px;
+	top:10px;
 	left:17px;
 	margin:0px;
 	width:76px;
@@ -75,7 +92,7 @@ select {
 
 .changeCam {
 	position:absolute;
-	top:250px;
+	top:10px;
 	left:112px;
 	margin:0px;
 	width: 76px;
@@ -90,7 +107,7 @@ select {
 
 .feedback, .homef {
 	position:absolute;
-	top:250px;
+	top:10px;
 	left:207px;
 	margin: 0px;
 	width: 76px;
@@ -192,32 +209,28 @@ select {
 }
 
 .cam4 {
-	position:absolute;
+	position:relative;
 	left: 0px;
 	width: 225px;
 	height: 169px;
 }
 .cam3 {
-	position:absolute;
-	left: 225px;
+	position:relative;
 	width: 225px;
 	height: 169px;
 }
 .cam2 {
-	position:absolute;
-	left: 450px;
+	position:relative;
 	width: 225px;
 	height: 169px;
 }
 .cam1 {
-	position:absolute;
-	left: 675px;
+	position:relative;
 	width: 225px;
 	height: 169px;
 }
 .cam0 {
-	position:absolute;
-	left: 900px;
+	position:relative;
 	width: 225px;
 	height: 169px;
 }
