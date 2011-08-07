@@ -70,7 +70,7 @@
 </ul> 
 
 <div>
-<form type="post" onsubmit="addFilename(); return false;">
+<form name="selectcam">
 	<select id="filename" name="filename">
 		<option value="null">Please select a view...</option>
 		<optgroup label="Dublin City Council">
@@ -157,12 +157,11 @@
 		</optgroup>
 	</select>
 	<br> 
-  <input type="text" id="position" name="position" 
-    placeholder="Number" style="width: 50px;" /> 
-  <input type="submit" value="Add Camera"/> 
+  <input type="text" id="position" name="position" placeholder="Number" style="width: 50px;" /> 
+  <input type="button" value="Add Camera" onclick="addFilename();">
+  <input type="button" value="Remove ALL" onclick="ClearAll();">  
 </form> 
 </div>
-
 	
 </div>
 

@@ -1,13 +1,9 @@
 /**Database scripting, based on html5rocks (http://www.html5rocks.com/en/tutorials/webdatabase/todo/)**/
 
-var html5rocks = {};
-html5rocks.webdb = {};
-html5rocks.webdb.db = null;
-
 var listCams = new Array();
 listCams['Site0Camera10']="The Quays from Liberty Hall";
 listCams['Site0Camera100']="N11-Fosters";
-listCams['Site0Camera101']="N11-Mont Merrion";
+listCams['Site0Camera101']="N11-Mount Merrion";
 listCams['Site0Camera102']="N11-Kilmacud Rd";
 listCams['Site0Camera103']="N11-Trees Road";
 listCams['Site0Camera104']="N11-Newtownpark Avenue";
@@ -84,102 +80,54 @@ listCams['ORRFox']="ORR at Foxhunter";
 listCams['ORRGrange']="ORR Grange Castle";
 listCams['ORRnangor']="ORR Nangor";
 
-html5rocks.webdb.open = function() {
-  var dbSize = 1024 * 1024; // 1MB
-  html5rocks.webdb.db = openDatabase("PREFCAM", "1.0", "list of cams", dbSize);
-}
-
-html5rocks.webdb.createTable = function() {
-  var db = html5rocks.webdb.db;
-  db.transaction(function(tx) {
-    tx.executeSql("CREATE TABLE IF NOT EXISTS Cams(id INTEGER PRIMARY KEY, filename TEXT, position INTEGER, added_on DATETIME)", []);
-  });
-}
-
-html5rocks.webdb.addFilename = function(filename, position) {
-  var db = html5rocks.webdb.db;
-  db.transaction(function(tx){
-    var addedOn = new Date();
-    tx.executeSql("INSERT INTO Cams(filename, position, added_on) VALUES (?,?,?)", 
-        [filename, position, addedOn],
-        html5rocks.webdb.onSuccess,
-        html5rocks.webdb.onError);
-   });
-}
-
-html5rocks.webdb.onError = function(tx, e) {
-  alert("There has been an error: " + e.message);
-}
-
-html5rocks.webdb.onSuccess = function(tx, r) {
-  // re-render the data.
-  html5rocks.webdb.getAllfilenames(loadItems);
-}
-
-html5rocks.webdb.getAllfilenames = function(renderFunc) {
-  var db = html5rocks.webdb.db;
-  db.transaction(function(tx) {
-    tx.executeSql("SELECT * FROM Cams ORDER BY position ", [], renderFunc, 
-        html5rocks.webdb.onError);
-  });
-}
-
-html5rocks.webdb.deletefilename = function(id) {
-  var db = html5rocks.webdb.db;
-  db.transaction(function(tx){
-    tx.executeSql("DELETE FROM Cams WHERE id=?", [id],      
-        html5rocks.webdb.onSuccess, 
-        html5rocks.webdb.onError);
-    });
-}
-
-function loadItems(tx, rs) {
-  var rowOutput = "";
-  var todoItems = document.getElementById("allfilenames");
-  for (var i=0; i < rs.rows.length; i++) {
-    rowOutput += renderTodo(rs.rows.item(i));
-  } 
-  todoItems.innerHTML = rowOutput;
-}
-
-function renderTodo(row) {
-	var Loc = getName(row.filename);
-	return "<li>" + row.filename + " - " + Loc  +" [<a href='javascript:void(0);'  onclick='html5rocks.webdb.deletefilename(" + row.id +");'>Delete</a>]</li>";
-}
-
-function displayItems(tx, rs) {
-  var imagesOutput = "";
-  var todoItems = document.getElementById("allimages");
-  for (var i=0; i < rs.rows.length; i++) {
-    imagesOutput += renderImage(rs.rows.item(i));
-  } 
-  todoItems.innerHTML = imagesOutput;
-}
-
-function renderImage(row){
-	var Loc = getName(row.filename);	
-	var url = 'src="http://trafficcam-fetcher.savina.net/serve_single_pic/';
-	return '<img alt="'+ Loc + '!" id="imgCamera0" class="webcam0" ' + url + row.filename + '/0"><img alt="'+ Loc + '!" id="imgCamera1" class="webcam1" ' + url + row.filename + '/1"><img alt="'+ Loc + '!" id="imgCamera2" class="webcam2" ' + url + row.filename + '/2"><img alt="'+ Loc + '!" id="imgCamera3" class="webcam3" ' + url + row.filename + '/3"><img alt="'+ Loc + '!" id="imgCamera4" class="webcam4" ' + url + row.filename + '/4">';
-}
-
 function initCamera() {
-  html5rocks.webdb.open();
-  html5rocks.webdb.createTable();
-  html5rocks.webdb.getAllfilenames(loadItems);
+	getFilenames();
 }
 
 function initIndex() {
-  html5rocks.webdb.open();
-  html5rocks.webdb.createTable();
-  html5rocks.webdb.getAllfilenames(displayItems);
+    getFilenames();
 }
 
 function addFilename() {
-  var filename = document.getElementById("filename");
-  var postion = document.getElementById("position");
-  html5rocks.webdb.addFilename(filename.value, postion.value);
-  todo.value = "";
-}  
+	var name = document.forms.selectcam.filename.value;
+    var pos = document.forms.selectcam.position.value;
+	localStorage.setItem(name, pos);
+	getFilenames();
+}
+
+function ClearAll(){
+	localStorage.clear();
+	getFilenames();
+}
+
+function removeFilename(){
+	var filename = document.getElementById("list").getName;
+	localStorage.removeItem(filename);
+	getFilenames();
+}
+
+function getFilenames(){
+	var rowOutput = "";
+	for (i=0; i<=localStorage.length-1; i++) {
+		filename = localStorage.key(i);
+		var Loc = getName(filename);
+		position = localStorage.getItem(filename);
+		rowOutput += "<li id='list' name=" + filename + ">" + Loc + " [<a href='javascript:void(0);' onclick='removeFilename();'>Delete</a>]</li>";
+	}
+	document.getElementById('allfilenames').innerHTML = rowOutput;
+} 
+
+function getImages(){
+	var rowOutput = "";
+	var url = 'src="http://trafficcam-fetcher.savina.net/serve_single_pic/';
+	for (i=0; i<=localStorage.length-1; i++) {
+		filename = localStorage.key(i);
+		var Loc = getName(filename);
+		position = localStorage.getItem(filename);
+		rowOutput += '<img alt="'+ Loc + '!" id="imgCamera0" class="webcam0" ' + url + filename + '/0"><img alt="'+ Loc + '!" id="imgCamera1" class="webcam1" ' + url + filename + '/1"><img alt="'+ Loc + '!" id="imgCamera2" class="webcam2" ' + url + filename + '/2"><img alt="'+ Loc + '!" id="imgCamera3" class="webcam3" ' + url + filename + '/3"><img alt="'+ Loc + '!" id="imgCamera4" class="webcam4" ' + url + filename + '/4">';
+	}
+	document.getElementById('xxallfilenames').innerHTML = rowOutput;
+}
 
 function getName(filename) {
 	var Location = listCams[filename];
