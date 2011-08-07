@@ -56,7 +56,7 @@ li a {
 }
 
 li a:hover:after {
-  content: ' (drag me)';
+  content: '(drag me)';
 }
 
 ul {
@@ -70,6 +70,7 @@ li.over {
 }
 #instruction
 {
+	color: #FFFFFF;
 	float: left;
 	position: fixed;
 }
@@ -214,8 +215,11 @@ function cancel(e)
 	//addEvent(el, 'd', cancel);
 	addEvent(el, 'dragend', function (e)
 	{
+<<<<<<< HEAD
 	var event;
 	if (!event) event = e;
+=======
+>>>>>>> Delete is not working yet...
 	event.target.parentNode.removeChild(event.target);
 	 
 	});
