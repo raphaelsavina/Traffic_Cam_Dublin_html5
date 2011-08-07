@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="description" content="A tool to allow you to choose your favourite traffic cams to be displayed." />
+  <title>Dublin Traffic Cams Favourite Selection</title>
+
+  <link rel="shortcut icon" href="images/favicon.ico" />
+  <link rel="stylesheet" media="all" href="/css/styles.css" />
+  <link rel="stylesheet" media="only screen and (max-width: 800px)" href="/css/styles.css" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+  <!-- iOS: run in full-screen mode and display upper status bar as translucent -->
+  <!--<meta name="apple-mobile-web-app-capable" content="yes" /> 
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />-->
+
+  <link rel="apple-touch-icon" href="/static/images/identity/HTML5_Badge_64.png" />
+
+  <link rel="apple-touch-icon-precomposed" href="/static/images/identity/HTML5_Badge_64.png" />
+  
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5-els.js"></script>
+  <![endif]-->
+
+  
+<style type="text/css">
+li {
+  list-style: none;
+  float: center;
+}
+
+li a {
+  text-decoration: none;
+  color: #000;
+  margin: 10px;
+  width: 150px;
+  border: 3px dashed #999;
+  background: #eee;
+  padding: 10px;
+  display: block;
+}
+
+
+
+*[draggable=true] {
+  -moz-user-select:none;
+  -khtml-user-drag: element;
+  cursor: move;
+}
+
+*:-khtml-drag {
+  background-color: rgba(238,238,238, 0.5);
+}
+
+li a:hover:after {
+  content: ' (drag me)';
+}
+
+ul {
+  margin-left: 200px;
+  min-height: 300px;
+}
+
+li.over {
+  border-color: #333;
+  background: #ccc;
+}
+#instruction
+{
+	float: left;
+	position: fixed;
+}
+.item {
+  background-color: #FF5555;
+border: 1px dashed #000;
+}
+
+#bin {
+  background-color: #FF6A6A;
+  height: 250px;
+  width: 166px;
+  float: left;
+  border: 3px dashed #fff;
+  position: fixed;
+  margin-top: 0;
+  top: 35px;
+}
+.item {
+  background-color: #FF5555;
+border: 1px dashed #000;
+}
+*[draggable=true] {
+  -moz-user-select:none;
+  -khtml-user-drag: element;
+  cursor: move;
+}
+</style>
+<script src="http://html5demos.com/h5utils.js"></script>
+</head>
+<body onload="">
+
+  <div id="instruction">Drag your favourites into the box.</div>
+  <div id="bin"></div>
+  <ul>
+		<li><a href="#" id="Site0Camera10">The Quays from Liberty Hall</a></li>
+		<li><a href="#" id="Site0Camera100">N11-Fosters</a></li>
+		<li><a href="#" id="Site0Camera101">N11-Mont Merrion</a></li>
+		<li><a href="#" id="Site0Camera102">N11-Kilmacud Rd</a></li>
+		<li><a href="#" id="Site0Camera103">N11-Trees Road</a></li>
+		<li><a href="#" id="Site0Camera104">N11-Newtownpark Avenue</a></li>
+		<li><a href="#" id="Site0Camera105">N11-Kill Lane</a></li>
+		<li><a href="#" id="Site0Camera106">N11-Clonkeen</a></li>
+		<li><a href="#" id="Site0Camera107">N11-Johnstown</a></li>
+		<li><a href="#" id="Site0Camera108">N11-Wyattville</a></li>
+		<li><a href="#" id="Site0Camera109">M1-Balbriggan</a></li>
+		<li><a href="#" id="Site0Camera110">M1-Airport</a></li>
+		<li><a href="#" id="Site0Camera111">M1-Drynam</a></li>
+		<li><a href="#" id="Site0Camera112">M1-Malahide Estuary</a></li>
+		<li><a href="#" id="Site0Camera113">M1-Lissenhall</a></li>
+		<li><a href="#" id="Site0Camera122">North Wall Quay</a></li>
+		<li><a href="#" id="Site0Camera127">Guild Street-Mayor Street</a></li>
+		<li><a href="#" id="Site0Camera131">Constitution Hill</a></li>
+		<li><a href="#" id="Site0Camera135">Dublin Port Tunnel Toll Plaza</a></li>
+		<li><a href="#" id="Site0Camera136">Samuel Beckett Bridge</a></li>
+		<li><a href="#" id="Site0Camera137">Sir John Rogersons Quay</a></li>
+		<li><a href="#" id="Site0Camera139">Guild Street-Seville Place</a></li>
+		<li><a href="#" id="Site0Camera15">John's Road-SCR</a></li>
+		<li><a href="#" id="Site0Camera163">John's Road West</a></li>
+		<li><a href="#" id="Site0Camera21">Dame Street from Civic Offices</a></li>
+		<li><a href="#" id="Site0Camera22">North Quays from Civic Offices</a></li>
+		<li><a href="#" id="Site0Camera23">Pearse Street</a></li>
+		<li><a href="#" id="Site0Camera24">North Strand Road</a></li>
+		<li><a href="#" id="Site0Camera27">Drumcondra Road</a></li>
+		<li><a href="#" id="Site0Camera31">Harolds Cross Bridge</a></li>
+		<li><a href="#" id="Site0Camera32">Cabra Road</a></li>
+		<li><a href="#" id="Site0Camera6">O'Connell Bridge</a></li>
+		<li><a href="#" id="Site0Camera66">Longmile Road</a></li>
+		<li><a href="#" id="Site0Camera71">M50-Blanchardstown Roundabout</a></li>
+		<li><a href="#" id="Site0Camera73">M50-Ballinteer</a></li>
+		<li><a href="#" id="Site0Camera74">M50-Edmondstown</a></li>
+		<li><a href="#" id="Site0Camera75">M50-Firhouse</a></li>
+		<li><a href="#" id="Site0Camera77">M50-Tallaght</a></li>
+		<li><a href="#" id="Site0Camera78">M50-Ballymount</a></li>
+		<li><a href="#" id="Site0Camera79">M50-Red Cow</a></li>
+		<li><a href="#" id="Site0Camera80">M50-Red Cow Slip</a></li>
+		<li><a href="#" id="Site0Camera81">M50-Greenhills Park</a></li>
+		<li><a href="#" id="Site0Camera82">M50-Lucan</a></li>
+		<li><a href="#" id="Site0Camera85">Naas road-Newlands cross</a></li>
+		<li><a href="#" id="Site0Camera87">M50-South of Finglas Roundabout</a></li>
+		<li><a href="#" id="Site0Camera91">N32-Malahide Road</a></li>
+		<li><a href="#" id="Site0Camera94">M1-M50</a></li>
+		<li><a href="#" id="Site0Camera95">M1-Port Tunnel Works</a></li>
+		<li><a href="#" id="Site0Camera96">M50-Ballymun</a></li>
+		<li><a href="#" id="BelgardAirton">Belgard Airton</a></li>
+		<li><a href="#" id="belgardcook">Belgard Cookstown</a></li>
+		<li><a href="#" id="belgardmayberry">Belgard Mayberry</a></li>
+		<li><a href="#" id="BelgardSqE">Belgard Square East</a></li>
+		<li><a href="#" id="Castleroad">Castle Road/ORR</a></li>
+		<li><a href="#" id="FonthillRon">Fonthill/Ronanstown</a></li>
+		<li><a href="#" id="Greenhillsairton">Greenhills Airton</a></li>
+		<li><a href="#" id="Greenhillsmayberry">Greenhills Mayberry</a></li>
+		<li><a href="#" id="Greenhillstallaght">Greenhills Tallaght</a></li>
+		<li><a href="#" id="Greenhillstymon">Greenhills Tymon</a></li>
+		<li><a href="#" id="Jobstown">Jobstown</a></li>
+		<li><a href="#" id="Lucanwood">Lucan Road at Woodvale</a></li>
+		<li><a href="#" id="N7citywest">N7/City West Junction</a></li>
+		<li><a href="#" id="N7Longmile">N7 Longmile</a></li>
+		<li><a href="#" id="N4newcastle">N4 Newcastle</a></li>
+		<li><a href="#" id="Rathcoole">N7/Rathcoole</a></li>
+		<li><a href="#" id="N81belgard">N81/Belgard Road</a></li>
+		<li><a href="#" id="N81Citywest">N81/Citwest</a></li>
+		<li><a href="#" id="N81oldbawn">N81 Oldbawn</a></li>
+		<li><a href="#" id="N81white">N81 Whitestown</a></li>
+		<li><a href="#" id="Bawneouge">Nangor Road/Bawneouge Jtn</a></li>
+		<li><a href="#" id="Deansrath">Nangor Road/Deansrath Jtn</a></li>
+		<li><a href="#" id="killen">Nangor Road/Killeen</a></li>
+		<li><a href="#" id="Parkwest">Nangor/Park West Junction</a></li>
+		<li><a href="#" id="m50redcow">M50 Red Cow</a></li>
+		<li><a href="#" id="ORRFetter">ORR Fettercairn</a></li>
+		<li><a href="#" id="ORRFox">ORR at Foxhunter</a></li>
+		<li><a href="#" id="ORRGrange">ORR Grange Castle</a></li>
+		<li><a href="#" id="ORRnangor">ORR Nangor</a></li>
+  </ul>
+
+
+
+
+
+<script>
+function cancel(e)
+{
+  if (e.preventDefault)
+  {
+    e.preventDefault();
+  }
+  return false;
+}
+
+
+ var links = document.querySelectorAll('li > a'), el = null;
+  for (var i = 0; i < links.length; i++) {
+    el = links[i];
+  
+    el.setAttribute('draggable', 'true');
+  
+    addEvent(el, 'dragstart', function (e) {
+      e.dataTransfer.effectAllowed = 'copy'; // only dropEffect='copy' will be dropable
+      e.dataTransfer.setData('filename', this.id); // required otherwise doesn't work
+	  e.dataTransfer.setData('text', this.text);
+    });
+	//addEvent(el, 'd', cancel);
+	addEvent(el, 'dragend', function (e)
+	{
+		this.remove();
+	});
+  }
+
+var drop = document.querySelector('#bin');
+// Tells the browser that we *can* drop on this target
+addEvent(drop, 'dragover', cancel);
+addEvent(drop, 'dragenter', cancel);
+
+addEvent(drop, 'drop', function (e) {
+  if (e.preventDefault) e.preventDefault(); // stops the browser from redirecting off to the text.
+
+  this.innerHTML += '<div class="item" draggable>' + e.dataTransfer.getData('text') + '</div>';
+  event.target.parentNode.removeChild(event.target);
+  return false;
+});
+
+(function()
+{
+  var id_ = 'columns-almostFinal';
+  var cols_ = document.querySelectorAll('#' + id_ + ' .column');
+  var dragSrcEl_ = null;
+
+  this.handleDragStart = function(e) {
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/html', this.innerHTML);
+
+    dragSrcEl_ = this;
+
+    this.style.opacity = '0.4';
+
+    // this/e.target is the source node.
+    this.addClassName('moving');
+  };
+
+  this.handleDragOver = function(e) {
+    if (e.preventDefault) {
+      e.preventDefault(); // Allows us to drop.
+    }
+  
+    e.dataTransfer.dropEffect = 'move';
+    
+    return false;
+  };
+
+  this.handleDragEnter = function(e) {
+    this.addClassName('over');
+  };
+
+  this.handleDragLeave = function(e) {
+    // this/e.target is previous target element.
+
+    this.removeClassName('over');
+  };
+
+  this.handleDrop = function(e) {
+    // this/e.target is current target element.
+
+    if (e.stopPropagation) {
+      e.stopPropagation(); // stops the browser from redirecting.
+    }
+
+    // Don't do anything if we're dropping on the same column we're dragging.
+    if (dragSrcEl_ != this) {
+      dragSrcEl_.innerHTML = this.innerHTML;
+      this.innerHTML = e.dataTransfer.getData('text/html');
+    }
+
+    return false;
+  };
+
+  this.handleDragEnd = function(e)
+  {
+    // this/e.target is the source node.
+    this.style.opacity = '1';
+
+    [].forEach.call(cols_, function (col)
+	{
+      col.removeClassName('over');
+      col.removeClassName('moving');
+    });
+  };
+
+  [].forEach.call(cols_, function (col) {
+    col.setAttribute('draggable', 'true');  // Enable columns to be draggable.
+    col.addEventListener('dragstart', this.handleDragStart, false);
+    col.addEventListener('dragenter', this.handleDragEnter, false);
+    col.addEventListener('dragover', this.handleDragOver, false);
+    col.addEventListener('dragleave', this.handleDragLeave, false);
+    col.addEventListener('drop', this.handleDrop, false);
+    col.addEventListener('dragend', this.handleDragEnd, false);
+  });
+})();
+  
+</script>
+
+<script src="/static/js/modernizr.custom.07172.js"></script>
+
+
+    </div>
+  </div>
+<script>
+    (function()
+	{
+      // Check if new appcache is available.
+      if (window.applicationCache)
+	  {
+       window.applicationCache.addEventListener('updateready', function(e)
+		{
+          if (window.applicationCache.status == window.applicationCache.UPDATEREADY)
+		  {
+            window.applicationCache.swapCache();
+            if (confirm('A new version of this site is available. Load it?'))
+			{
+              window.location.reload();
+            }
+          }
+        }, false);
+     }
+
+      function isCompatible()
+	  {  
+		return Modernizr.draganddrop;
+      }
+
+      if (isCompatible() === false)
+	  {
+        document.getElementById('notcompatible').className = '';
+      } 
+	  else if (isCompatible() === true)
+	  {
+        document.getElementById('compatible').className = '';
+      }
+
+  </script>
+</body>
+</html>
