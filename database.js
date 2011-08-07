@@ -109,14 +109,9 @@ function removeArgs(filename){
 
 function ClearAll(){
 	localStorage.clear();
-	getFilenames();
+	//getFilenames();
 }
 
-
-function ClearAll(){
-	localStorage.clear();
-	getFilenames();
-}
 
 
 
