@@ -25,9 +25,13 @@
 	  })();
 
 	</script>
+	
+	<!--Database scripting, based on html5rocks (http://www.html5rocks.com/en/tutorials/webdatabase/todo/)-->
+	<script src="database.js"></script>
+
 </head>
 
-<body>
+<body onload="initCamera();">
 
 <!--[if lt IE 7]>
 	<script type="text/javascript">
@@ -39,6 +43,10 @@
 <div class="about" id="about">
 	<a class="linktab" href="about.html">about</a>
 </div>
+<div class="changeCam" id="changeCam">
+	<a class="linktab" href="index.php">home</a>
+</div>
+
 <div class="feedback" id="feedback">
 	<a  class="linktab" href="feedback.html">feedback</a>
 </div>
@@ -58,8 +66,12 @@
 <script type="text/javascript"    src="http://pagead2.googlesyndication.com/pagead/show_afmc_ads.js"></script>
 </div>
 
-<form id="selectcam" name="selectcam" action="index.php" method="get">
-	<select id="webcam" name="webcam" onchange="selectcam.submit()">
+<ul class="textabout" id="allfilenames"> 
+</ul> 
+
+<div>
+<form type="post" onsubmit="addFilename(); return false;">
+	<select id="filename" name="filename">
 		<option value="null">Please select a view...</option>
 		<optgroup label="Dublin City Council">
 		<option value="Site0Camera10">The Quays from Liberty Hall</option>
@@ -144,7 +156,14 @@
 		<option value="ORRnangor">ORR Nangor</option>
 		</optgroup>
 	</select>
-</form>	
+	<br> 
+  <input type="text" id="position" name="position" 
+    placeholder="Number" style="width: 50px;" /> 
+  <input type="submit" value="Add Camera"/> 
+</form> 
+</div>
+
+	
 </div>
 
 </body>

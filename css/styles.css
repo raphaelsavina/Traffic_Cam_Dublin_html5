@@ -52,7 +52,7 @@ a.linktab:hover, a.linktab:active {
 
 select {
 	position:absolute;
-	top:50px;
+/*	top:50px; */
 	left:5px;
 	width: 220px;
 }
