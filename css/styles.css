@@ -191,3 +191,33 @@ select {
 	border: #000000;
 }
 
+.cam4 {
+	position:absolute;
+	left: 0px;
+	width: 225px;
+	height: 169px;
+}
+.cam3 {
+	position:absolute;
+	left: 225px;
+	width: 225px;
+	height: 169px;
+}
+.cam2 {
+	position:absolute;
+	left: 450px;
+	width: 225px;
+	height: 169px;
+}
+.cam1 {
+	position:absolute;
+	left: 675px;
+	width: 225px;
+	height: 169px;
+}
+.cam0 {
+	position:absolute;
+	left: 900px;
+	width: 225px;
+	height: 169px;
+}
