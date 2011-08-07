@@ -94,17 +94,25 @@ function addFilename() {
 	localStorage.setItem(name, pos);
 	getFilenames();
 }
-
-function ClearAll(){
-	localStorage.clear();
-	getFilenames();
-}
-
 function removeFilename(){
 	var filename = document.getElementById("list").getName;
 	localStorage.removeItem(filename);
 	getFilenames();
 }
+function addArgs(name,pos) {
+	localStorage.setItem(name, pos);
+	//getFilenames();
+}
+function removeArgs(filename){
+	localStorage.removeItem(filename);
+	//getFilenames();
+}
+function ClearAll(){
+	localStorage.clear();
+	getFilenames();
+}
+
+
 
 function getFilenames(){
 	var rowOutput = "";
@@ -114,6 +122,7 @@ function getFilenames(){
 		position = localStorage.getItem(filename);
 		rowOutput += "<li id='list' name=" + filename + ">" + Loc + " [<a href='javascript:void(0);' onclick='removeFilename();'>Delete</a>]</li>";
 	}
+	if(document.getElementById('allfilenames')) 
 	document.getElementById('allfilenames').innerHTML = rowOutput;
 } 
 
