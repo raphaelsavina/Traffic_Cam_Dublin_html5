@@ -94,10 +94,7 @@ function addFilename() {
 	localStorage.setItem(name, pos);
 	getFilenames();
 }
-<<<<<<< HEAD
-function removeFilename(){
-	var filename = document.getElementById("list").getName;
-=======
+
 
 function ClearAll(){
 	localStorage.clear();
@@ -105,7 +102,6 @@ function ClearAll(){
 }
 
 function removeFilename(Filename){
->>>>>>> origin/master
 	localStorage.removeItem(filename);
 	getFilenames();
 }
