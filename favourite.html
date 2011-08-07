@@ -239,12 +239,11 @@ addEvent(dropzone, 'drop', function (e) {
   if (e.preventDefault) e.preventDefault(); // stops the browser from redirecting off to the text.
 
   this.innerHTML += '<div class="item" id="item' + i + '" draggable><a href="' + e.dataTransfer.getData('filename') +'"></a>' + e.dataTransfer.getData('text') + '</div>';
-  items[i] = document.getElementById('item'+i);
-  addArgs(e.dataTransfer.getData('filename'),i);
+  var filename = e.dataTransfer.getData('filename');
+  addArgs(filename,i);
   
   
-   //items[i] = document.getElementById('item'+i);
-  
+	items[i] = document.getElementById('item'+i);
 	
 	var elit = items[i];
   
@@ -254,6 +253,7 @@ addEvent(dropzone, 'drop', function (e) {
 	{
 	var event;
 	if (!event) event = e;
+	
 	event.target.parentNode.removeChild(event.target);
 	e.dataTransfer.setData('text', this.innerHTML);
 	//e.dataTransfer.effectAllowed = 'copy';
@@ -261,8 +261,6 @@ addEvent(dropzone, 'drop', function (e) {
 	
 	addEvent(elit, 'dragend', function (e)
 	{
-	
-	 
 	});
 	
   i++;
